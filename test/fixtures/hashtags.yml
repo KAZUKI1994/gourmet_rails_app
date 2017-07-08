@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_id: 1
+  couple: false
+  firstdate: false
+  onesidelove: false
+  confession: false
+  lunch: false
+  cafe: false
+  dinner: false
+  aniversary: false
+  oneyear_ani: false
+  onemonth_ani: false
+  xmas: false
+  valentine: false
+  whiteday: false
+
+two:
+  post_id: 1
+  couple: false
+  firstdate: false
+  onesidelove: false
+  confession: false
+  lunch: false
+  cafe: false
+  dinner: false
+  aniversary: false
+  oneyear_ani: false
+  onemonth_ani: false
+  xmas: false
+  valentine: false
+  whiteday: false

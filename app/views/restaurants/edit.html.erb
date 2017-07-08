@@ -1,0 +1,4 @@
+<h1>店情報を編集する</h1>
+<%= render 'form' %>
+<%= link_to '戻る', :back %> |
+<%= link_to "削除する", @restaurant, method: :delete, data: { confirm: "本当に削除しますか？" } %>

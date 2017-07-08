@@ -1,0 +1,31 @@
+<h3>クーポン発行管理画面</h3>
+<%= link_to '新規発行', new_coupon_path, :class => "btn btn-success" %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>発行クーポンー一覧</h4>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>レストラン名</th>
+      <th>イメージ画像</th>
+      <th>コンセプト</th>
+      <th>コース</th>
+      <th>価格</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @coupons.each do |coupon| %>
+      <tr>
+      <td><%= link_to coupon.restaurant.name, restaurant_path(coupon.restaurant_id) %></td>
+      <td><%= image_tag coupon.photo.images, :size => "180x150" if(coupon.photo) %></td>
+      <td><%= link_to coupon.concept %></td>
+      <td><%= coupon.price %></td>
+      <td><%= link_to '編集', edit_coupon_path(coupon), :class=>"btn btn-info" %>
+      <%= link_to '削除', coupon, method: :delete, data: { confirm: '本当に削除しますか？' }, :class => "btn btn-danger" %></td>
+      <td></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,17 @@
+<h3>デートお役立ち記事一覧</h3>
+<div class="white">
+  <% @articles.each do |article| %>
+  <div class="media">
+    <% if article.photos %>
+      <% if article.photos.first %>
+        <%= link_to image_tag(article.photos.first.images.url, :size=>"80x80"), article_path(article.id), :class=>"media-left" %>
+      <% end %>
+    <% end %>
+    <div class="media-body">
+      <h4 class="media-heading"><%= link_to article.title, article_path(article.id) %></h4>
+      <p><span class="badge"><%= article.tag %></span></p>
+      <p><%= truncate(strip_tags(article.body), :length => 100) %></p>
+    </div>
+  </div>
+  <% end %>
+</div>

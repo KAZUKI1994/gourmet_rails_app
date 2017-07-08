@@ -1,0 +1,36 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.profile_photo{
+  display: block;
+ margin-left: auto;
+ margin-right: auto;
+ padding-top: 30px;
+ width :200px;
+  height :200px;
+  border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+}
+
+.user_nickname{
+  text-align:center;
+}
+
+.college_date{
+text-align: center;
+}
+
+.profile_tag{
+  float: right;
+}
+
+
+
+
+.clear{
+  clear:both;
+}

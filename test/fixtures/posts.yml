@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titile: MyString
+  user_id: 1
+  restaurant_id: 1
+  content: MyText
+  time_zone: MyString
+  amount: 1
+  total_eval: 1
+  quality_eval: 1
+  service_eval: 1
+  atomos_eval: 1
+  drink_eval: 1
+  partner_eval: 1
+  visit_date: 2016-01-02 13:18:22
+  url: MyString
+
+two:
+  titile: MyString
+  user_id: 1
+  restaurant_id: 1
+  content: MyText
+  time_zone: MyString
+  amount: 1
+  total_eval: 1
+  quality_eval: 1
+  service_eval: 1
+  atomos_eval: 1
+  drink_eval: 1
+  partner_eval: 1
+  visit_date: 2016-01-02 13:18:22
+  url: MyString

@@ -1,0 +1,64 @@
+*{
+	margin: 0px;
+	padding:0px;
+}
+.clearfix:after{
+	display:block;
+	clear:both;
+	content:"";
+}
+
+.type{
+	background: url(../img/typewriter.jpg);
+	background-size: cover;
+	height:680px;
+	margin: auto;
+	position:relative;
+	top:0px;	
+	overflow: hidden;
+}
+.wrapper{
+	width: 80%;
+	margin:auto;
+}
+/*=========header===========*/
+.header{
+	padding-top:30px;
+	width:980px;
+	height:180px;
+	background:white;
+	margin-left:40px;
+	margin-top:50px;
+	border-radius: 5px;
+	background-color: rgba(255,255,255,0.9);
+}
+.icon{
+	float:left;
+	margin:10px 70px 0px;
+}
+.html{
+	float:left;
+	width:50%;
+	margin-top: 30px;
+}
+
+/*===========================*/
+.elements{
+	width:260px;
+	padding:20px;
+	height:300px;
+	float:left;
+	margin:20px;
+	border-radius: 5px;
+	background-color: rgba(255,255,255,0.9);
+}
+.main{
+	width:1050px;
+	margin:auto;
+	background-color: red
+}
+/*============================*/
+h2{
+	padding-bottom:15px;
+	text-align: center;
+}

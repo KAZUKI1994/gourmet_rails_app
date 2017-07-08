@@ -1,0 +1,22 @@
+<% if @showban %>
+	<%= link_to image_tag(@showban.photo.images, :size => "240x200"), @showban.link %>
+<% end %>
+<div class="panel panel-sidemenu">
+  <div class="panel-heading">
+    <i class="glyphicon glyphicon-star"></i><strong><%= @heading %></strong>のおすすめ
+  </div>
+
+  <% @restaurants.each do |restaurant| %>
+  <div class="thumbnail">
+    <% if restaurant.photos.first.images.url %>
+      <%= image_tag restaurant.photos.first.images, :alt => "Thumbnail", :class=>"img-rounded topimages" %>
+    <% end %>
+    <div class="caption">
+      <strong><%= link_to restaurant.name, restaurant %></strong>
+      <p><%= restaurant.address %></p>
+      <%= link_to '続きを見る', restaurant , :class => 'btn' %>
+    </div>
+  </div>
+  <% end %>
+  <%= paginate @restaurants %>
+</div>

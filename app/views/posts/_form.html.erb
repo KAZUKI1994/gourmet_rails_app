@@ -1,0 +1,258 @@
+
+  <!-- 文字カウンターjs -->
+  <script type="text/javascript"><!--
+   function ShowLength( str ) {
+      document.getElementById("inputlength").innerHTML = str.length + "文字";
+   }
+// --></script>
+
+
+<h1>新規投稿</h1>
+<div class="toukou clearfix">
+  <div class="content">
+    <h2><hr>
+        あなたのデートを記事にしてオススメレストランをご紹介ください！！
+    </h2>
+    <P>
+      人気記事、上位３記事にはデートに使える豪華景品を差し上げます！
+    </P>
+      <div class="list">
+        <ul>
+          <li>１位：リッツカールトンペアチケット</li>
+          <li>２位：ユニバーサルスタジオジャパン ペアチケット</li>
+          <li>３位：TOHOシネマズギフト券(3000円)</li>
+        </ul>
+        <span>
+         さあ、いますぐ応募しよう！！
+        </span>
+      </div>
+        <div class="img">
+          <%=image_tag "mongon1.jpg",:size => "210x100" %>
+          <%=image_tag "uenti.jpg",:size=>"210x100"%>
+          <%=image_tag 'restaurant.jpg',:size=>"210x100"%>
+    </div>
+  </div>
+</div>
+  <%= form_for @post, html: {class: "form-horizontal"} do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= @post.errors.count %> 個の項目が不足しています。</h4>
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "記事を書く店を選択する" do %>
+    <p class="alert alert-warning">STEP1： まずは<strong><%= link_to "こちらのリンク", new_restaurant_path %></strong>から書きたい記事の店（梅田・北新地、四条・河原町、三宮・元町）を登録してください。</p>
+    <p class="alert alert-warning">STEP2： 登録した店を以下の選択ボタンから選択してください。</p>
+    <div class="form-group">
+      <%= f.label "レストランを選ぶ", :class => "col-sm-2" %>
+      <%= f.select :restaurant_id, @restaurants, :class => "col-sm-10" %>
+    </div>
+  <% end %>
+
+  <%= field_set_tag '投稿内容' do %>
+    <div class="form-group">
+      <label class="col-sm-2">タイトル</label>
+      <%= f.text_field :titile, :class => "col-sm-10" %>
+    </div>
+    <div class="form-group">
+      <label for="" class="col-sm-2">本文</label><br>
+      <em>200文字以下だとトップに反映されにくくなります。</em>
+      <p id="inputlength">0文字</p>
+      <p><%= f.text_area :content, :size => "50x10", :class => "col-sm-10", :onkeyup => "ShowLength(value);" %></p>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <label for="">訪問日</label>
+        <%= f.date_field :visit_date %>
+      </div>
+      <div class="col-sm-4">
+        <label for="">時間帯　</label>
+        <label><%= f.radio_button :time_zone, "昼", :class => "radio-inline" %>昼</label>
+        <label><%= f.radio_button :time_zone, "夜", :class => "radio-inline" %>夜</label>
+      </div>
+      <div class="col-sm-4">
+        <label for="">使った金額</label>
+        <%= f.select :amount, @price_zone %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :total_eval, "総合評価" %>
+        <label><%= f.radio_button :total_eval, 5 %>5</label>
+        <label><%= f.radio_button :total_eval, 4 %>4</label>
+        <label><%= f.radio_button :total_eval, 3 %>3</label>
+        <label><%= f.radio_button :total_eval, 2 %>2</label>
+        <label><%= f.radio_button :total_eval, 1 %>1</label>
+      </div>
+      <div class="col-sm-4">
+        <%= f.label :quality_eval, "料理・味" %>
+        <label><%= f.radio_button :quality_eval, 5 %>5</label>
+        <label><%= f.radio_button :quality_eval, 4 %>4</label>
+        <label><%= f.radio_button :quality_eval, 3 %>3</label>
+        <label><%= f.radio_button :quality_eval, 2 %>2</label>
+        <label><%= f.radio_button :quality_eval, 1 %>1</label>
+      </div>
+      <div class="col-sm-4">
+        <%= f.label :service_eval, "サービス" %>
+        <label><%= f.radio_button :service_eval, 5 %>5</label>
+        <label><%= f.radio_button :service_eval, 4 %>4</label>
+        <label><%= f.radio_button :service_eval, 3 %>3</label>
+        <label><%= f.radio_button :service_eval, 2 %>2</label>
+        <label><%= f.radio_button :service_eval, 1 %>1</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :atomos_eval, "雰囲気" %>
+        <label><%= f.radio_button :atomos_eval, 5 %>5</label>
+        <label><%= f.radio_button :atomos_eval, 4 %>4</label>
+        <label><%= f.radio_button :atomos_eval, 3 %>3</label>
+        <label><%= f.radio_button :atomos_eval, 2 %>2</label>
+        <label><%= f.radio_button :atomos_eval, 1 %>1</label>
+      </div>
+      <div class="col-sm-4">
+        <%= f.label :drink_eval, "ドリンク・酒" %>
+        <label><%= f.radio_button :drink_eval, 5 %>5</label>
+        <label><%= f.radio_button :drink_eval, 4 %>4</label>
+        <label><%= f.radio_button :drink_eval, 3 %>3</label>
+        <label><%= f.radio_button :drink_eval, 2 %>2</label>
+        <label><%= f.radio_button :drink_eval, 1 %>1</label>
+      </div>
+      <div class="col-sm-4">
+        <%= f.label :partner_eval, "相手の満足度" %>
+        <label><%= f.radio_button :partner_eval, 5 %>5</label>
+        <label><%= f.radio_button :partner_eval, 4 %>4</label>
+        <label><%= f.radio_button :partner_eval, 3 %>3</label>
+        <label><%= f.radio_button :partner_eval, 2 %>2</label>
+        <label><%= f.radio_button :partner_eval, 1 %>1</label>
+      </div>
+    </div>
+  <% end %>
+
+  <%= field_set_tag 'シチュエーション' do %>
+    <div class="form-group">
+      <%= f.label :relation, "相手との関係性", :class => "col-sm-3" %>
+      <%= f.select :relation, [["告白前", "告白前"], ["告白", "告白"], ["告白後", "告白後"]], :class => "col-sm-9" %>
+    </div>
+    <%= f.fields_for :hashtag do |h| %>
+      <div class="form-group">
+        <%= h.hidden_field :post_id, :value => @post.id %>
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :surprise,{}, "#サプライズ", nil %>サプライズ
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :firstdate ,{}, "#初デート", nil%>初デート
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :onesidelove ,{}, "#片思い", nil%>片想い
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :birthday ,{}, "#誕生日", nil %>誕生日
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :confession ,{}, "#告白", nil %>告白
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :lunch, {}, "#ランチ", nil %>ランチ
+        </label>
+
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :cafe,{}, "#カフェ", nil %>カフェ
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :dinner,{}, "#ディナー", nil %>ディナー
+        </label>
+
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :aniversary,{}, "#記念日", nil %>記念日
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :xmas ,{}, "#クリスマス", nil %>クリスマス
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :valentine ,{}, "#バレンタイン", nil %>バレンタイン
+        </label>
+
+        <label for="" class="checkbox-inline">
+          <%= h.check_box :whiteday,{}, "#ホワイトデー", nil  %>ホワイトデー
+        </label>
+      </div>
+    <% end %>
+  <% end %>
+  <%= field_set_tag '写真' do %>
+  <p class="alert alert-warning">STEP4：お店やメニューの写真を紹介してください。<br>デートの写真や二人の絆を出すような画像をアップして人気記事を目指しましょう。</p>
+  <%= f.fields_for :photos do |p| %>
+    <div class="form-group">
+      <%= p.file_field :images, :class => "col-sm-4" %>
+      <%= p.hidden_field :images_cache %>
+    </div>
+  <% end %>
+  <% end %>
+
+  <%= field_set_tag '投稿者情報' do %>
+    <% if user_signed_in? %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <div class="form-group">
+        <label class="col-sm-2">ニックネーム</label>
+        <%= f.text_field :author_name, :class => "col-sm-10", :value => current_user.nickname %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">大学</label>
+        <%= f.text_field :author_college, :class => "col-sm-10", :value => current_user.college %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">学部</label>
+        <%= f.text_field :author_faculty, :class => "col-sm-10", :value => current_user.faculty %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">学年</label>
+        <%= f.select :author_grade, @grades, :class => "col-sm-10", :selected => current_user.grade %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">性別</label>
+        <%= f.select :author_gender, [['男性', '男性'],['女性','女性']], :class => "col-sm-10", :selected => current_user.gender  %>
+      </div>
+    <% else %>
+      <div class="form-group">
+        <label class="col-sm-2">ニックネーム</label>
+        <%= f.text_field :author_name, :class => "col-sm-10" %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">大学</label>
+        <%= f.text_field :author_college, :class => "col-sm-10" %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">学部</label>
+        <%= f.text_field :author_faculty, :class => "col-sm-10" %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">学年</label>
+        <%= f.select :author_grade, @grades, :class => "col-sm-10" %>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2">性別</label>
+        <%= f.select :author_gender, [['男性', '男性'],['女性','女性']], :class => "col-sm-10" %>
+      </div>
+      <p class="alert alert-info">ユーザー登録すれば次回以降、投稿者情報を記入する手間が省けます。投稿を保存したら是非続いて会員登録してみましょう。</p>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "保存する", :class => "btn btn-success" %>
+  </div>
+<% end %>

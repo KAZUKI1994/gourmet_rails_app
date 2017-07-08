@@ -1,0 +1,48 @@
+h1{
+  margin-top:20px;
+  font-size:26px;
+}
+.toukou hr{
+  color:black;
+}
+
+.toukou{
+  background-color:#FFFFFF;
+  font-color:white;
+}
+.toukou h2{
+  font-size:18px
+}
+
+.toukou li{
+  list-style:none;
+  dsiplay:inline;
+  font-size:14px;
+}
+.content{
+  margin:0 0 0 15px;
+}
+.img{
+  float:left;
+  clear:both;
+  margin-left:40px;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+
+.frame {
+display: inline-block;
+box-shadow: 0px 0px 25px -5px rgba(0, 0, 0, 0.8);
+}
+.frame{
+  border-radius: 10px;
+}
+
+#inputlength{
+   text-align:right;
+
+}

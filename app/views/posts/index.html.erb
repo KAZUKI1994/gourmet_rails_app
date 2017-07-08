@@ -1,0 +1,67 @@
+<h3><%= @heading %></h3>
+<% if @showban %>
+	<%= link_to image_tag(@showban.photo.images, :size => "240x200"), @showban.link %>
+<% end %>
+<% if @posts %>
+	<% @posts.each do |post| %>
+		<div class="thumbnail">
+			<% if post.photos.first.images.url %>
+	  			<%= image_tag(post.photos.first.images, :size => "200x200", :class => "img-thumbnail") %>
+	  		<% end %>
+			<div class="caption">
+				<strong><%= link_to post.titile, post_path(post.id) %></strong><span><%= post.author_college %>&nbsp;/&nbsp;<%= post.author_gender %>&nbsp;/&nbsp;<%= post.author_grade %></span>
+				<p>
+				<% if post.total_eval == 5 %>
+					<%= image_tag "ecalic024_002.png" %>
+				<% elsif post.total_eval == 4 %>
+					<%= image_tag "ecalic024_005.png" %>
+				<% elsif post.total_eval == 3 %>
+					<%= image_tag "ecalic024_008.png" %>
+				<% elsif post.total_eval == 2 %>
+					<%= image_tag "ecalic024_011.png" %>
+				<% elsif post.total_eval == 1 %>
+					<%= image_tag "ecalic024_014.png" %>
+				<% end %>
+				</p>
+
+				<p><span class="situtags">
+				<%= post.hashtag.surprise %>
+		     	<%= post.hashtag.firstdate %>
+		     	<%= post.hashtag.onesidelove %>
+		     	<%= post.hashtag.confession %>
+		     	<%= post.hashtag.lunch %>
+		     	<%= post.hashtag.cafe %>
+		     	<%= post.hashtag.dinner %>
+		     	<%= post.hashtag.birthday %>
+		     	<%= post.hashtag.aniversary %>
+		     	<%= post.hashtag.xmas %>
+		     	<%= post.hashtag.valentine %>
+		     	<%= post.hashtag.whiteday %></span></p>
+		     	<p><%= truncate(post.content, :length => 80) %></p>
+				金額：
+				<% if post.amount == 500 %>
+					¥0 ~ ¥999
+				<% elsif post.amount == 1500 %>
+					¥1000 ~ ¥1999
+				<% elsif post.amount == 2500 %>
+					¥2000 ~ ¥2999
+				<% elsif post.amount == 3500 %>
+					¥3000 ~ ¥3999
+				<% elsif post.amount == 4500 %>
+					¥4000 ~ ¥4999
+				<% elsif post.amount == 5500 %>
+					¥5000 ~ ¥5999
+				<% elsif post.amount == 6500 %>
+					¥6000 ~ ¥6999
+				<% elsif post.amount == 7500 %>
+					¥7000 ~ ¥7999
+				<% elsif post.amount == 8500 %>
+					¥8000 ~ ¥8999
+				<% else %>
+					¥9000 ~
+				<% end %>
+				<span><%= link_to "続きを読む", post_path(post.id) %></span>
+			</div>
+		</div>
+	<% end %>
+<% end %>

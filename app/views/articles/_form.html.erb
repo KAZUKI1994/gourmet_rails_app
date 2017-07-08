@@ -1,0 +1,44 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= field_set_tag '写真' do %>
+    <%= f.fields_for :photos do |p| %>
+      <%= p.file_field :images %>
+      <%= p.hidden_field :images_cache %>
+    <% end %>
+  <% end %>
+
+  <%= field_set_tag '記事本文' do %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル", :class => "col-xs-2" %>
+      <%= f.text_field :title, :class => "col-xs-10" %>
+    </div>
+    <br>
+    <div class="form-group">
+      <p><%= f.label :body, "本文", :class => "col-xs-2" %></p>
+      <%= f.text_area :body, :rows => 30, :cols => 70 %>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.label :tag, "タグ", :class => "col-xs-2" %>
+      <%= f.text_field :tag, :class => "col-xs-10" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url, "URL", :class => "col-xs-2" %>
+      <%= f.text_field :url, :class => "col-xs-10" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "投稿する", :class => 'btn btn-success' %>
+    </div>
+  <% end %>
+<% end %>

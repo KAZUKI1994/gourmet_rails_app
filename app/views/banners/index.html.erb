@@ -1,0 +1,30 @@
+<h3>バナー出稿管理画面</h3>
+<%= link_to '新規出稿', new_banner_path, :class => "btn btn-success" %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>出稿バナー一覧</h4>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>バナー画像</th>
+      <th>URL</th>
+      <th>出稿開始</th>
+      <th>出稿終了予定</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @banners.each do |banner| %>
+      <tr>
+      <td><%= image_tag banner.photo.images, :size => "120x100" %></td>
+      <td><%= link_to truncate(banner.link), banner.link %></td>
+      <td><%= banner.created_at %></td>
+      <td><%= banner.finish_time %></td>
+      <td><%= link_to '編集', edit_banner_path(banner), :class=>"btn btn-info" %>
+      <%= link_to '削除', banner, method: :delete, data: { confirm: '本当に削除しますか？' }, :class => "btn btn-danger" %></td>
+      <td></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

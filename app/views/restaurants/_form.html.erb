@@ -1,0 +1,46 @@
+<%= form_for(@restaurant, html: {class: "form-horizontal"}) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h4><%= @restaurant.errors.count %>個の項目が不足しています。</h4>
+      <ul>
+      <% @restaurant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= field_set_tag "店情報" do %>
+    <p class="alert alert-warning"><strong>梅田・北新地、四条・河原町、三宮・元町</strong>でデートにおすすめな店を紹介してください。</p>
+    <div class="form-group">
+      <%= f.label :name, "店名(※必須)", :class => "col-sm-2" %>
+      <%= f.text_field :name, :class => "col-sm-10" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :area, "エリア(※必須)", :class => "col-sm-2" %>
+      <%= f.select :area, [["梅田・北新地", "梅田・北新地"], ["四条・河原町", "四条・河原町"], ["三宮・元町", "三宮・元町"]], :class => "col-sm-10" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address, "住所", :class => "col-sm-2" %>
+      <%= f.text_field :address, :class => "col-sm-10" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :telnumber, "電話番号", :class => "col-sm-2" %>
+      <%= f.telephone_field :telnumber, :class => "col-sm-10" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url, "ホームページ", :class => "col-sm-2" %>
+      <%= f.text_field :url, :class => "col-sm-10" %>
+    </div>
+    <%= field_set_tag '写真' do %>
+      <p class="alert alert-warning">お店やメニューの写真を紹介してください。デート中の写真などを投稿してもらってもかまいません。</p>
+      <%= f.fields_for :photos do |p| %>
+        <%= p.file_field :images %>
+        <%= p.hidden_field :images_cache %>
+      <% end %>
+    <% end %>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit "店を登録する", :class => "btn btn-success" %>
+  </div>
+<% end %>

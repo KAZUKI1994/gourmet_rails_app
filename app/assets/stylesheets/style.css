@@ -1,0 +1,262 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+}
+
+.header0{
+	background-color: white;
+	font-size: 15px;
+	text-align: right;
+	height: 50px;
+}
+#header{
+	background-image: url('haikei.jpeg');
+	background-size: cover;
+	text-align: center;
+	height: 600px;
+	margin-top: 20px;
+	padding-top: 50px;
+}
+.smartdate{
+	color: white;
+	height: 120px;
+	margin-top: 50px;
+	font-size: 30pt;
+	font-weight: bold;
+}
+.mongon{
+	height: 100px;
+	color: steelblue;
+	font-size: 20pt;
+	font-weight: bold;
+}
+/*
+==========================
+こちらに移動するための記述をします。
+たとえば、こちらでは
+	margin: auto;
+を指定してみました。
+==========================
+
+*/
+.cvswitch{
+	background-color: firebrick;
+	width: 275px;
+	height: 40px;
+	margin: auto;
+	text-align: center;
+	border-radius: 10px;
+	border: outset 5px gray;
+	padding-top: 5px;
+}
+.cvswitch a{
+	text-decoration: none;
+	color: white;
+}
+.cvswitch:hover{
+	background-color: darkred;
+}
+.header0 img{
+	float: left;
+}
+.nav ul{
+	float: right;
+	list-style-type: none;
+}
+.nav ul a{
+	text-decoration: none;
+	color: steelblue;
+}
+.nav ul a:hover{
+	background-color: dodgerblue;
+}
+.nav li{
+	color: royalblue;
+	float: left;
+	margin-right: 40px;
+	margin-top: 20px;
+}
+/*
+.nav:hover{
+	color: midnightblue;
+}
+	*/
+
+#main{
+	color: dimgray;
+	text-align: center;
+	padding-top: 50px;
+	border-bottom: solid;
+	border-bottom: dotted;
+	border-style: thin;
+	border-color: gray;
+	height: 700px;
+	width: 100%;
+}
+.dateimage{
+	float: left;
+	margin-top: 70px;
+	margin-left: 50px;
+}
+.introduce{
+	font-size: 24pt;
+	padding-top: 50px;
+	margin-right: 50px;
+	margin-top: 100px;
+	color: steelblue;
+}
+.introduce ul{
+	list-style-type: none;
+	font-weight: bold;
+}
+.date{
+	color: red;
+}
+#main2{
+	color: dimgray;
+	text-align: center;
+	height: 580px;
+	width: 100%;
+	padding-top: 50px;
+}
+.needs1{
+	float: left;
+	font-size: 20pt;
+	width: 33%;
+	padding-top: 50px;
+}
+.needs2{
+	float: left;
+	font-size: 20pt;
+	width: 33%;
+	margin-top: 50px;
+}
+.needs3{
+	float: left;
+	font-size: 20pt;
+	width: 33%;
+	padding-top: 50px;
+}
+.needs1 p{
+	text-align: right;
+	padding-top: 100px;
+}
+.needs3 p{
+	text-align: left;
+	padding-top: 100px;
+}
+.thinking2{
+	padding-bottom: 30px;
+}
+#footer0{
+	background-color: maroon;
+	height: 5px;
+}
+#footer{
+	padding-top: 100px;
+	background-color: #e62e2e;
+	text-align: center;
+	height: 600px;
+	color: white;
+}
+#footer h1{
+	color: white;
+	font-size: 30pt;
+}
+.couple{
+	width: 33%;
+	height: 100px;
+	float: left;
+	margin-top: 100px;
+}
+.memo{
+	width: 33%;
+	height: 100px;
+	float: left;
+	margin-top: 100px;
+}
+.map{
+	width: 33%;
+	height: 100px;
+	float: left;
+	margin-top: 100px;
+}
+.box{
+	width: 33%;
+	height: 100px;
+	float: left;
+	margin-top: 80px;
+}
+.box p{
+	font-size: 20pt;
+}
+.box2{
+	width: 33%;
+	height: 100px;
+	float: left;
+	margin-top: 80px;
+}
+.box2 p{
+	font-size: 20pt;
+}
+.box3{
+	width: 33%;
+	height: 100px;
+	float: left;
+	margin-top: 80px;
+}
+.box3 p{
+	font-size: 20pt;
+}
+.itd{
+	width: 33%;
+	height: 200px;
+	float: left;
+	color: silver;
+}
+.itd p{
+	font-size:20px;
+}
+.itd_memo{
+	width: 33%;
+	height: 200px;
+	float: left;
+}
+.itd_map{
+	width: 33%;
+	height: 200px;
+	float: left;
+}
+#footer2{
+	height: 300px;
+	width: 100%;
+	background-color: white;
+	margin-top: 0px;
+	padding-top: 30px;
+	text-align: center;
+	color: dimgray;
+}
+#footer2 h2{
+	font-size: 26pt;
+}
+.cvswitch2{
+	background-color: firebrick;
+	width: 275px;
+	height: 40px;
+	margin: auto;
+	text-align: center;
+	border-radius: 10px;
+	border: outset 5px gray;
+	margin-top: 50px;
+	padding-bottom: 13px;
+}
+.cvswitch2 a{
+	text-decoration: none;
+	color: white;
+	font-size: 20pt;
+}
+.cvswitch2:hover{
+	background-color: darkred;
+}
+

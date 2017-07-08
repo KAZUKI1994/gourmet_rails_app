@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartdateとは</title>
+      <%= stylesheet_link_tag "style", :media => "all" %>
+      <%= stylesheet_link_tag "sample", :media => "all" %>
+      <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="img/favicon.png" >
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.sliphover.min.js"></script>
+</head>
+<body>
+  <div class="header0">
+    <div class="icon_smartdate">
+        <%=image_tag "facebook03.png" ,:size=>'180x68'%>
+    </div>
+    <div class="nav">
+        <ul>  
+          <li><a href="http://smartdate.jp">トップ</a></li>
+          <li><a href="http://smartdate.jp/posts/new">記事を投稿する</a></li>
+          <li><a href="http://smartdate.jp/users/sign_up">ユーザー登録(無料)</a></li>
+        </ul>
+    </div>
+  </div>
+  <div id="header">
+        <div class="smartdate"><h1>Smart date</h1></div>
+        <div class="mongon"><h4>〜あなたのデートをより豊かに〜</h4></div>
+        <div class="cvswitch"><h2><a href="http://smartdate.jp/users/sign_up">さっそく登録する</a></h2></div>
+          <script src="path/to/jquery.min.js"></script>
+        <script src="path/to/jquery.sliphover.min.js"></script>
+  </div>  
+  <div id="main">
+        <h1>スマートデートとは</h1>
+        <div id="container">
+
+          <%=image_tag "dateimage.jpg",:class=>"dateimage" %>
+        </div>
+    <div class="introduce">
+          <ul>
+        <li>関西の大学生向けの</li><br>
+          <li><span class="date">デート</span>に特化した</li><br>
+            <li>グルメ口コミサイト</li>
+          </ul>
+    </div>
+  </div>
+  <div id="main2"> 　
+        <h1>多数の大学生がつぶやいていました！</h1>
+          <div class="needs1"><p>「交際期間が長くなるにつれ<br>デートのネタがなくなる...」</p></div>
+          <div class="needs2"><p>「大手グルメナビで<br>デートのお店を探したけど、<br>情報が多すぎてわからない...」</P></div>
+          <div class="needs3"><p>「サプライズで<br>失敗したくない...」</p></div>
+          <div class="thinking2"><%=image_tag "thinking2.jpg" ,:size=>"350x250"%></div>
+
+  </div>      
+  <div id="footer0">
+    </div>
+  <div id="footer">
+        <h1>スマートデートでできること</h1>
+          <div class="couple"><%=image_tag "couple_icon2.jpeg", :size=>'150x150'%></div>
+          <div class="memo"><%=image_tag "memo_icon2.jpeg" ,:size=>'150x150'%></div>
+          <div class="map"><%=image_tag "map_icon2.jpeg",:size=>'150x150'%></div>
+          <div class="box"><p>シチュエーション</p></div>
+
+
+          <!-- 
+          =============================
+          閉じタグがない状態でしたので、調べたところ、<font size="3">を削除し、クラス名を整理することで解決しました。
+          =============================
+      -->
+          <div class="box2"><p>記事</p></div>
+          <div class="box3"><p>エリア</p></div>
+          <div class="itd">
+            <p>誕生日、記念日、告白など、<br>様々なシチュエーションから<br>お店を探すことができます。</p>
+          </div>
+          <div class="itd">
+            <p>実際のデート体験の記事を<br>読んで参考にしながら、<br>お店を選ぶことができます。</p>
+          </div>
+          <div class="itd"><p>梅田、河原町、三宮を中心に<br>細かいエリアから選ぶことができます。</p></div>
+  </div>
+  <div id="footer2">
+    <h2>さあ、あなたもデートマスターになろう！</h2>
+    <div class="cvswitch2"><h2><a href="http://smartdate.jp/users/sign_up">無料会員登録</a></h2></div>
+
+  </div>
+
+  <script type="text/javascript">
+$(function(){
+  $('#container').sliphover({
+    caption: 'title'
+  });
+})
+</script>
+<!-- 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    s
+    <div id="sampleCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li class="active" data-target="#sampleCarousel" data-slide-to="0"></li>
+    <li data-target="#sampleCarousel" data-slide-to="1"></li>
+    <li data-target="#sampleCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="../img/sample-1140x500.png" alt="First slide">
+    </div>
+    <div class="item">
+      <img src="../img/sampleB-1140x500.png" alt="Second slide">
+    </div>
+    <div class="item">
+      <img src="../img/sampleC-1140x500.png" alt="Third slide">
+    </div>
+  </div>
+  <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">前へ</span>
+  </a>
+  <a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">次へ</span>
+  </a>
+  </div>
+ -->
+
+</body>
+</html>

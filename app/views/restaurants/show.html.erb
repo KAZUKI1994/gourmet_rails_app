@@ -1,0 +1,130 @@
+<div class="thumbnail">
+    <% if @restaurant.photos.first.images.url %>
+      <%= image_tag @restaurant.photos.first.images, :size => "200x200", :alt => "Thumbnail", :class=>"img-rounded" %>
+    <% end %>
+    <div class="caption">
+      	<h3><strong><%= @restaurant.name %></strong>　in　<%= @restaurant.area %></h3>
+      	<p><i class="glyphicon glyphicon-map-marker"></i>&nbsp;
+      	<% if @restaurant.address? %>
+      		<%= @restaurant.address %>
+      	<% else %>
+      	未登録です。
+      	<% end %></p>
+      	<p><i class="glyphicon glyphicon-earphone"></i>&nbsp;
+      	<% if @restaurant.telnumber? %>
+      		<%= @restaurant.telnumber %>
+      	<% else %>
+      	未登録です。
+      	<% end %></p>
+      	<%= link_to "HP", @restaurant.url, :class => 'btn btn-info' %>
+		<%= link_to "電話する", "tel:#{@restaurant.telnumber}", :class => "btn btn-success" %>
+    </div>
+ </div>
+
+<div class="row">
+  <% @restaurant.photos.each do |photo| %>
+    <% if photo.images.url %>
+      <div class="sm-3">
+        <%= image_tag(photo.images.url, :class => "img-thumbnail", :size => "200x200") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%if @restaurant.coupons.first %>
+<h3 style="color: red;">スマートデート限定お得なクーポン</h3>
+  <% @restaurant.coupons.each do |coupon| %>
+  <div class="panel panel-coupon">
+    <div class="panel-heading">
+      <h3>&nbsp;<strong><%= coupon.concept %></strong></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-8">
+          <p>コースメニュー</p>
+          <p><%= simple_format(coupon.course) %></p>
+          <%= link_to "このクーポンを使う", coupon_path(coupon.id), :class => "btn btn-danger" %>
+        </div>
+        <div class="col-xs-4">
+          <h4>コース価格：<%= coupon.price %>円</h4>
+          <%= link_to image_tag(coupon.photo.images.url, :class => "media-object img-rounded", :size => "150x150") %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+<h3>口コミ記事</h3>
+<% if @restaurant.posts %>
+	<% @restaurant.posts.each do |post| %>
+	<div class="thumbnail">
+		<% if post.photos.first.images.url %>
+  			<%= image_tag(post.photos.first.images, :size => "200x200", :class => "img-thumbnail") %>
+  		<% end %>
+		<div class="caption">
+			<strong><%= link_to post.titile, post_path(post.id) %></strong><span><%= post.author_college %>&nbsp;/&nbsp;<%= post.author_gender %>&nbsp;/&nbsp;<%= post.author_grade %></span>
+			<p>
+			<% if post.total_eval == 5 %>
+				<%= image_tag "ecalic024_002.png" %>
+			<% elsif post.total_eval == 4 %>
+				<%= image_tag "ecalic024_005.png" %>
+			<% elsif post.total_eval == 3 %>
+				<%= image_tag "ecalic024_008.png" %>
+			<% elsif post.total_eval == 2 %>
+				<%= image_tag "ecalic024_011.png" %>
+			<% elsif post.total_eval == 1 %>
+				<%= image_tag "ecalic024_014.png" %>
+			<% end %>
+			</p>
+			<% if post.hashtag %>
+				<p><span class="situtags">
+				<%= post.hashtag.surprise %>
+		     	<%= post.hashtag.firstdate %>
+		     	<%= post.hashtag.onesidelove %>
+		     	<%= post.hashtag.confession %>
+		     	<%= post.hashtag.lunch %>
+		     	<%= post.hashtag.cafe %>
+		     	<%= post.hashtag.dinner %>
+		     	<%= post.hashtag.birthday %>
+		     	<%= post.hashtag.aniversary %>
+		     	<%= post.hashtag.xmas %>
+		     	<%= post.hashtag.valentine %>
+		     	<%= post.hashtag.whiteday %></span></p>
+		     <% else %>
+		     	<p></p>
+		     <% end %>
+	     	<p><%= truncate(post.content, :length => 80) %></p>
+			金額：
+			<% if post.amount == 500 %>
+				¥0 ~ ¥999
+			<% elsif post.amount == 1500 %>
+				¥1000 ~ ¥1999
+			<% elsif post.amount == 2500 %>
+				¥2000 ~ ¥2999
+			<% elsif post.amount == 3500 %>
+				¥3000 ~ ¥3999
+			<% elsif post.amount == 4500 %>
+				¥4000 ~ ¥4999
+			<% elsif post.amount == 5500 %>
+				¥5000 ~ ¥5999
+			<% elsif post.amount == 6500 %>
+				¥6000 ~ ¥6999
+			<% elsif post.amount == 7500 %>
+				¥7000 ~ ¥7999
+			<% elsif post.amount == 8500 %>
+				¥8000 ~ ¥8999
+			<% else %>
+				¥9000 ~
+			<% end %>
+			<span><%= link_to "続きを読む", post_path(post.id) %></span>
+		</div>
+	</div>
+	<% end %>
+<% end %>
+<%= link_to "店の口コミを書く", new_post_path, :class => "btn btn-success" %>
+<% if user_signed_in? %>
+	<%= link_to '店情報を編集する', edit_restaurant_path(@restaurant), :class => "btn btn-info" %> |
+<% end %>
+<%= link_to '前に戻る', :back, :class => "btn btn-primary" %>
+
+<div class="clear"></div>

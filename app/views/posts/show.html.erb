@@ -1,0 +1,112 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h4><%= @post.titile %></h4>
+  </div>
+</div>
+
+<div class="row">
+  <% @post.photos.each do |photo| %>
+    <% if photo.images.url %>
+      <div class="col-sm-3">
+        <%= image_tag(photo.images.url, :class => "img-thumbnail", :size => "200x200") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-body">
+    <p class="situtags">
+    <% if @post.hashtag %>
+      <%= @post.hashtag.surprise  %>
+      <%= @post.hashtag.firstdate %>
+      <%= @post.hashtag.onesidelove %>
+      <%= @post.hashtag.confession %>
+      <%= @post.hashtag.lunch %>
+      <%= @post.hashtag.cafe %>
+      <%= @post.hashtag.dinner %>
+      <%= @post.hashtag.aniversary %>
+      <%= @post.hashtag.xmas %>
+      <%= @post.hashtag.valentine %>
+      <%= @post.hashtag.whiteday %>
+    <% else %>
+    <% end %>
+    </p>
+    <!-- 評価 -->
+    <p><i class="glyphicon glyphicon-user"></i>&nbsp;相手との関係性：<%= @post.relation %></p>
+    <p>総合評価：
+      <% if @post.total_eval == 5 %>
+        <%= image_tag "ecalic024_002.png" %>
+      <% elsif @post.total_eval == 4 %>
+        <%= image_tag "ecalic024_005.png" %>
+      <% elsif @post.total_eval == 3 %>
+        <%= image_tag "ecalic024_008.png" %>
+      <% elsif @post.total_eval == 2 %>
+        <%= image_tag "ecalic024_011.png" %>
+      <% elsif @post.total_eval == 1 %>
+        <%= image_tag "ecalic024_014.png" %>
+      <% end %>
+    （料理・味<%= @post.quality_eval %>
+    サービス<%= @post.service_eval %>
+    雰囲気<%= @post.atomos_eval %>
+    ドリンク・酒<%= @post.drink_eval %>
+    相手の評価<%= @post.partner_eval %>
+    ）</p>
+    <p>金額：
+    <% if @post.amount == 500 %>
+      ¥0 ~ ¥999
+    <% elsif @post.amount == 1500 %>
+      ¥1000 ~ ¥1999
+    <% elsif @post.amount == 2500 %>
+      ¥2000 ~ ¥2999
+    <% elsif @post.amount == 3500 %>
+      ¥3000 ~ ¥3999
+    <% elsif @post.amount == 4500 %>
+      ¥4000 ~ ¥4999
+    <% elsif @post.amount == 5500 %>
+      ¥5000 ~ ¥5999
+    <% elsif @post.amount == 6500 %>
+      ¥6000 ~ ¥6999
+    <% elsif @post.amount == 7500 %>
+      ¥7000 ~ ¥7999
+    <% elsif @post.amount == 8500 %>
+      ¥8000 ~ ¥8999
+    <% else %>
+      ¥9000 ~
+    <% end %></p>
+    <!-- 投稿者基本情報 -->
+    <p><i class="glyphicon glyphicon-user"></i>&nbsp;投稿者：<%= @post.author_college %>　<%= @post.author_faculty %>　<%= @post.author_grade %>　<%= @post.author_gender %>　<%= @post.author_name %></p>
+    <p>訪問日：<%= @post.visit_date %>
+    <% if @post.time_zone == "昼" %>
+      <%= image_tag "sun.jpg", :size => "20x20" %>
+    <% else %>
+      <%= image_tag "moon.svg", :size => "20x20" %>
+    <% end %>
+    </p>
+    <hr>
+    <p><%= simple_format(@post.content) %></p>
+  </div>
+</div>
+
+<div class="fb-like" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+<h4>店情報</h4>
+<div class="thumbnail">
+    <% if @post.restaurant.photos.first.images.url %>
+      <%= image_tag @post.restaurant.photos.first.images, :size => "200x200", :alt => "Thumbnail", :class=>"img-rounded" %>
+    <% end %>
+    <div class="caption">
+      <h3><strong><%= link_to @post.restaurant.name, restaurant_path(@post.restaurant.id) %></strong>　in　<%= @post.restaurant.area %></h3>
+      <p><i class="glyphicon glyphicon-map-marker"></i>&nbsp;<%= @post.restaurant.address %></p>
+      <p><i class="glyphicon glyphicon-earphone"></i>&nbsp;<%= @post.restaurant.telnumber %></p>
+      <%= link_to "HP", @post.restaurant.url, :class => 'btn btn-info' %>
+    <%= link_to "電話する", "tel:#{@post.restaurant.telnumber}", :class => "btn btn-success" %>
+    </div>
+ </div>
+
+
+
+<% if user_signed_in? && current_user.id == @post.user_id %>
+<%= link_to '編集する', edit_post_path(@post), :class => "btn btn-success" %> |
+<%= link_to '戻る', :back, :class => "btn btn-primary" %>
+<% end %>

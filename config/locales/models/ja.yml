@@ -1,0 +1,40 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+      user: ユーザー情報
+      restaurant: 店
+    attributes:
+      post:
+        titile: タイトル
+        created_at: 登録日時
+        updated_at: 更新日時
+        content: 本文
+        time_zone: 時間帯
+        total_eval: 総合評価
+        quality_eval: 料理・味
+        service_eval: サービスの質
+        atomos_eval: 雰囲気
+        drink_eval: ドリンク・酒
+        partner_eval: 相手の満足度
+        visit_date: 訪問日
+        author_name: 投稿者名
+        author_college: 大学
+        author_faculty: 学部
+        author_gender: 性別
+        author_grade: 学年
+      restaurant:
+        name: 店名
+        address: 住所
+        url: HP
+        telnumber: 電話番号
+        area: エリア
+      user:
+        email: メールアドレス
+        nickname: ニックネーム
+        college: 大学
+        faculty: 学部
+        grade: 学年
+        gender: 性別
+        password: パスワード 
+        

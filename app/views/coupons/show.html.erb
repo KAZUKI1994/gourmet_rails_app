@@ -1,0 +1,49 @@
+<div class="text-center">
+  <h4>こちらのページをお店の方に見せてください。</h4>
+</div>
+<div class="thumbnail">
+  <%= image_tag @coupon.photo.images.url, :size=>"300x200" %>
+  <div class="text-center">
+    <h3><%= @coupon.concept %></h3>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th width="25%">クーポン詳細</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>コースメニュー</td>
+        <td><%= simple_format(@coupon.course) %></td>
+      </tr>
+      <tr>
+        <td>クーポン価格</td>
+        <td><%= @coupon.price %>円</td>
+      </tr>
+      <tr>
+        <td>店名</td>
+        <td><%= link_to @coupon.restaurant.name, restaurant_path(@coupon.restaurant_id) %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @coupon.restaurant.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @coupon.restaurant.telnumber %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4><%= @coupon.restaurant.name %>のデート体験を記事にしましょう！！</h4>
+<%= link_to "記事を投稿する", new_post_path, :class => "btn btn-lg btn-warning" %>
+
+<% if user_signed_in? %>
+  <% if current_user.admin == 1 %>
+    <p>管理者用リンク：<%= link_to 'クーポン編集', edit_coupon_path(@coupon) %> |
+    <%= link_to 'クーポン一覧に戻る', coupons_path %></p>
+  <% end %>
+<% end %>

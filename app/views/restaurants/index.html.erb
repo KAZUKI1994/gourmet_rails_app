@@ -1,0 +1,123 @@
+<!-- 店検索ボタン画面 -->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-topmenu">
+      <div class="panel-heading">
+        <h4 class="panel-title topmenu-title"><a data-toggle="collapse" data-parent="#category" href="#category-situ" aria-expanded="true"><%= image_tag "humanlogo.png", :size => "40x40" %><span>シチュエーション</span><br>で探す</a></h4>
+      </div>
+
+      <div class="collapse panel-collapse" id="category-situ">
+        <ul class="list-group">
+          <li class="list-group-item"><i class="glyphicon glyphicon-gift"></i>&nbsp;<%= link_to "気になるあの子と", posts_onesidelove_path%></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-heart"></i>&nbsp;<%= link_to "告白の大一番", posts_confession_path%></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-education"></i>&nbsp;<%= link_to "初めてのデートなら", posts_firstdate_path%></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-calendar"></i>&nbsp;<%= link_to "記念日・誕生日にオススメ", posts_aniversary_path%></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-topmenu">
+      <div class="panel-heading topmenu-title">
+        <h4 class="panel-title"><a data-toggle="collapse" data-parent="#area" href="#area-select" aria-expanded="true"><%= image_tag "arealogo.png", :size => "40x40" %><span>エリア</span><br>で探す</a></h4>
+      </div>
+      <div class="collapse panel-collapse" id="area-select">
+        <ul class="list-group">
+          <li class="list-group-item"><%= link_to "梅田・北新地", restaurants_umeda_path %></li>
+          <li class="list-group-item"><%= link_to "三宮・元町", restaurants_koube_path %></li>
+          <li class="list-group-item"><%= link_to "四条・河原町", restaurants_kyoto_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- サイトのイメージ画像スライド -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "gazo1.jpg" %>
+      <div class="carousel-caption">
+        <h3><strong>現役大学生のための</strong>グルメサイト</h3>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "gazo2.jpg" %>
+      <div class="carousel-caption">
+        <h3>デートのお店を<strong>デート記事</strong>から選ぶ</h3>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "gazo5.jpg" %>
+      <div class="carousel-caption">
+        <h3><strong>梅田・河原町・三宮近辺</strong>のおすすめ店を紹介</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="panel panel-sidemenu">
+  <div class="panel-heading">
+    <i class="glyphicon glyphicon-star"></i>今週のおすすめ
+  </div>
+  <% @restaurants.each do |restaurant| %>
+  <div class="thumbnail">
+    <% if restaurant.photos.first.images.url %>
+      <%= image_tag restaurant.photos.first.images, :alt => "Thumbnail", :class=>"img-rounded topimages" %>
+    <% end %>
+    <div class="caption">
+      <strong><%= link_to restaurant.name, restaurant %></strong>　in　<%= restaurant.area %>
+      <p><%= restaurant.address %></p>
+      <%= link_to '続きを見る', restaurant , :class => 'btn' %>
+    </div>
+  </div>
+  <% end %>
+  <%= paginate @restaurants %>
+</div>
+
+<!--Start second row of columns-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

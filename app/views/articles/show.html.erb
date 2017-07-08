@@ -1,0 +1,30 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h4><%= @article.title %></h4>
+  </div>
+</div>
+
+<div class="row">
+  <% @article.photos.each do |photo| %>
+    <% if photo.images.url %>
+      <div class="sm-3">
+        <%= image_tag(photo.images.url, :class => "img-thumbnail", :size => "200x200") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-body">
+    <p><span class="badge"><%= @article.tag %></span></p>
+    <%= simple_format(@article.body, :escape => false) %>
+  </div>
+</div>
+<% if @article.url %>
+  <%= link_to "詳しく見る", @article.url, :class=>"btn btn-danger" %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to '編集する', edit_article_path(@article) %> |
+  <%= link_to '記事一覧', articles_path %>
+<% end %>

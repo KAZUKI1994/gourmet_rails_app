@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+	<title>Smartdate</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+	<%= csrf_meta_tags %>
+	<%= favicon_link_tag "/favicon.ico" %>
+  <%= analytics_init if Rails.env.production? %>
+
+	<!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+	<meta name="title" content="SmartDate ~大学生のデート記事で選ぶグルメサイト~">
+	<meta name="copyright" content="西山裕子">
+	<meta name="Keywords"
+		content="関西, グルメ, デート, 京都, 河原町, 四条, 学生, 大学生, 大阪, 梅田, 北新地, 神戸, 三宮, 元町, ディナー, スマートデート, smartdate, すまーとでーと" lang="ja">
+	<meta name="description"
+		content="大学生のデート記事で選ぶグルメサイト。梅田・北新地、四条・河原町、三宮・梅田に特化した関西の大学生のためのグルメサイト。素敵なデート体験をあなたに届けます。">
+
+	<!-- Facebook -->
+	<meta property="og:title" content="SmartDate ~大学生のデート記事で選ぶグルメサイト~" />
+	<meta property="og:type" content="article" />
+	<meta property="og:description"
+		content="大学生のデート記事で選ぶグルメサイト。梅田・北新地、四条・河原町、三宮・梅田に特化した関西の大学生のためのグルメサイト。素敵なデート体験をあなたに届けます。">
+	<meta property="og:site_name" content="Smartdate"/>
+
+</head>
+<body>
+<!-- Facebook Like and Share -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1690276014542055";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Navigation -->
+<nav class="navbar navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>メニュー
+        <i class="glyphicon glyphicon-user"></i>
+      </button>
+      <small class="text-left navbar-text">〜さぁ、スマートなデートをしよう〜</small><br>
+      <%= link_to image_tag('sitelogo.png'), root_path ,:class => "", :id => "sitelogo" %>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "運営", profiles_path %></li>
+        <li><%= link_to "トップ", root_path %></li>
+        <li><%= link_to "記事を投稿する", new_post_path, :class => "btn btn-sm btn-danger" %></li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to 'マイページ', "/users/#{current_user.id}" %>
+          </li>
+          <li>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </li>
+          <% if current_user.admin == 1 %>
+            <li><%= link_to "管理ページ", users_path %></li>
+          <% end %>
+        <% else %>
+          <li><%= link_to "ユーザー登録（無料）", new_user_registration_path, :class => "active" %></li>
+          <li><%= link_to "ログイン", new_user_session_path, :class => "active" %></li>
+        <% end %>
+      </ul>
+      <!-- 検索の機能 viewが崩れるためいったんコメントアウト-->
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+
+
+
+
+
+
+<div class="container" id="content">
+  <div class="row">
+    <div class="col-md-8">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-sidemenu" id="side-situ">
+        <div class="panel-heading">
+          <h4 class="panel-title"><i class="glyphicon glyphicon-search"></i>&nbsp;カテゴリからデートを探す</h4>
+        </div>
+        <ul class="list-group">
+					<li class="list-group-item"><h5>シチュエーションで探す</h5></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-gift"></i>&nbsp;<%= link_to "気になるあの子と", posts_onesidelove_path%></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-heart"></i>&nbsp;<%= link_to "告白の大一番", posts_confession_path%></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-education"></i>&nbsp;<%= link_to "初めてのデートなら", posts_firstdate_path%></li>
+          <li class="list-group-item"><i class="glyphicon glyphicon-calendar"></i>&nbsp;<%= link_to "記念日・誕生日にオススメ", posts_aniversary_path%></li>
+					<li class="list-group-item"><h5>エリアから探す</h5></li>
+					<li class="list-group-item"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;<%= link_to "梅田・北新地", restaurants_umeda_path %></li>
+					<li class="list-group-item"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;<%= link_to "三宮・元町", restaurants_koube_path %></li>
+					<li class="list-group-item"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;<%= link_to "四条・河原町", restaurants_kyoto_path %></li>
+        </ul>
+      </div>
+
+
+			<div class="panel panel-sidemenu">
+				<div class="panel-heading"><h4>デートお役立ち</h4></div>
+				<ul class="list-group">
+					<% @top_articles.each do |article| %>
+					<li class="list-group-item">
+						<%= link_to article.title, article_path(article.id) %>
+					</li>
+					<% end %>
+					<li class="list-group-item"><%= link_to "もっと見る", articles_path %></li>
+				</ul>
+			</div>
+
+      <div class="panel panel-sidemenu">
+        <div class="panel-heading"><h4>感想検索</h4></div>
+        <%= form_tag("/posts/search",method: :get) do %>
+            <div class="form-group">
+              <input type="text" value="" name="keyword" class="form-control" placeholder="感想で検索しよう">
+              <button class="btn btn-search" title="検索" type ="submit">検索</button>
+            </div>
+          <% end %>
+        </div>
+        <% if @showban2 %>
+          <%= link_to image_tag(@showban2.photo.images, :size => "300x250", :class => "banner"), @showban2.link %>
+        <% end %>
+				<div class="fb-like" data-href="https://smartdate.jp/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+      </div>
+  </div>
+</div>
+<!-- 共通フッター -->
+<footer>
+	<p>
+	&copy;2016 SmartDate　
+	</p>
+</footer>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<script>
+$('.carousel').carousel({
+  interval: 5000
+})
+</script>
+</body>
+</html>

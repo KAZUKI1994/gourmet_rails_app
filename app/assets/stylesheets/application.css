@@ -1,0 +1,161 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body{
+	background: rgba(247, 244, 241, 0.6);
+}
+#content{
+	margin-top: 110px;
+}
+.thumbnail > .img-rounded, .img-thumbnail{
+	float: left;
+  margin: 10px 10px 0 0 ;
+  height: 90px;
+  width:  150px;
+}
+.topimages{
+	
+}
+.caption > strong{
+	font-size: 20px;
+}
+.caption > span{
+	float: right;
+}
+.situtags{
+	color: #f0ad4e;
+}
+/* タグデザイン */
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #ff7f50;
+  border-radius: 10px;
+}
+/* === サイドメニュー === */
+@media (min-width: 768px) {
+	#side-situ .collapse{
+		display: block; /* PCの時はサイドメニューは表示 */
+	}
+}
+.banner{ /* バナー表示用スタイリング */
+	margin: 5px;
+}
+
+/*　トップメニューのパネルスタイリング */
+.panel-topmenu {
+  border-color: transparent;
+}
+.panel-topmenu > .panel-heading {
+  color: #696969;
+  background-color: #fff;
+  border-left: solid 5px rgba(240, 120, 69, 1);
+}
+.panel-topmenu > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ebccd1;
+}
+.panel-topmenu > .panel-heading .badge {
+  color: #f2dede;
+  background-color: #a94442;
+}
+.panel-topmenu > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ebccd1;
+}
+.topmenu-title span{
+	font-size: 25px;
+}
+.topmenu-title a{
+	display: block;
+}
+
+/* サイドメニューのパネルスタイリング */
+.panel-sidemenu {
+  border-color: #ebccd1;
+}
+.panel-sidemenu > .panel-heading {
+  color: rgba(240, 120, 69, 1);
+  background-color: rgba(254, 247, 236, 1);
+  border-left: solid 5px rgba(240, 120, 69, 1);
+}
+.panel-sidemenu > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ebccd1;
+}
+.panel-sidemenu > .panel-heading .badge {
+  color: #f2dede;
+  background-color: #a94442;
+}
+.panel-sidemenu > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ebccd1;
+}
+/* クーポン画面のスタイリング */
+.panel-coupon {
+  border: outset 5px #ffa07a;
+}
+.panel-coupon > .panel-heading {
+  color: #000000;
+	background: -moz-linear-gradient(#ffe4e1, #fff);
+	background: -webkit-gradient(linear, top, bottom, from(#ffe4e1), to(#fff));
+  background: linear-gradient(#ffe4e1, #fff);
+}
+.panel-coupon > .panel-heading > p{
+	border-left: solid 5px #ff4500;
+}
+.panel-coupon > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #ebccd1;
+}
+.panel-coupon > .panel-heading .badge {
+  color: #f2dede;
+  background-color: #a94442;
+}
+.panel-coupon > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #ebccd1;
+}
+/* 記事一覧画面のスタイリング */
+.white{
+	background-color: #fff;
+	padding: 10px 10px 10px 3px;
+	border-radius: 5px;
+	box-shadow: 1px 1px #a9a9a9;
+}
+/* フッターのスタイリング */
+footer{
+	text-align: center;
+	width: 100vw;
+	margin: 0;
+}
+
+.btn-search{
+margin-top: 10px;
+margin-left: 10px;
+}
+
+.form-control{
+  margin-top: 10px;
+}
+
+
+/*スマートデートとはのcss
+*/
+
+
+
